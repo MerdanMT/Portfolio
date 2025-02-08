@@ -16,13 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class AuthController {
 
-
-    private final AuthService authService;
-
     private final UserService userServices;
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody @Validated RegisterRequest registerRequest) {
+
         try {
             userServices.registerUser(registerRequest);
             return ResponseEntity.ok("User registered successfully");
@@ -30,10 +28,10 @@ public class AuthController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
     @PostMapping("/login")
     public LoginResponse login(@RequestBody @Validated LoginRequest loginRequest) {
 
-//        return authService.attempt(loginRequest.getEmail(), loginRequest.getPassword());
         return userServices.loginUser(loginRequest);
     }
 
