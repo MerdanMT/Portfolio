@@ -20,7 +20,6 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody @Validated RegisterRequest registerRequest) {
-
         try {
             userServices.registerUser(registerRequest);
             return ResponseEntity.ok("User registered successfully");

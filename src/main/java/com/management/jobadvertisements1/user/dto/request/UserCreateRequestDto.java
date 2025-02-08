@@ -14,10 +14,6 @@ public class UserCreateRequestDto {
 
     String userName;
 
-    String email;
-
-    String password;
-
     String birthDate;
 
     String phoneNumber;
