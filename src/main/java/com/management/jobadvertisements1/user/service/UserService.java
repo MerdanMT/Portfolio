@@ -1,5 +1,8 @@
 package com.management.jobadvertisements1.user.service;
 
+import com.management.jobadvertisements1.registrationAndLogin.model.LoginRequest;
+import com.management.jobadvertisements1.registrationAndLogin.model.LoginResponse;
+import com.management.jobadvertisements1.registrationAndLogin.model.RegisterRequest;
 import com.management.jobadvertisements1.user.dto.request.UserCreateRequestDto;
 import com.management.jobadvertisements1.user.dto.request.UserUpdateRequestDto;
 import com.management.jobadvertisements1.user.dto.response.UserResponseDto;
@@ -30,5 +33,9 @@ public interface UserService {
     List<UserResponseDto> getAllUsersByRegion(String region);
 
     User getUserByEmail(String email);
+
+    void registerUser(RegisterRequest registerRequest);
+
+    LoginResponse loginUser(LoginRequest loginRequest);
 
 }

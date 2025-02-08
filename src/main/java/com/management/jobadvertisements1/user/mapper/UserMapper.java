@@ -1,6 +1,5 @@
 package com.management.jobadvertisements1.user.mapper;
 
-import com.management.jobadvertisements1.security.MyUserDetails;
 import com.management.jobadvertisements1.user.dto.request.UserCreateRequestDto;
 import com.management.jobadvertisements1.user.dto.request.UserUpdateRequestDto;
 import com.management.jobadvertisements1.user.dto.response.UserResponseDto;
@@ -17,6 +16,5 @@ public interface UserMapper {
 
     User toUser(@MappingTarget User user, UserUpdateRequestDto userUpdateRequestDto);
 
-    MyUserDetails toMyUserDetails(User user);
 
 }

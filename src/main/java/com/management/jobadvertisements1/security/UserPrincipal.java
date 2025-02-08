@@ -1,41 +1,37 @@
 package com.management.jobadvertisements1.security;
 
+import lombok.Builder;
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.List;
 
-public class MyUserDetails implements UserDetails {
+@Data
+@Builder
+public class UserPrincipal implements UserDetails {
+
+    private final Long id;
 
     private final String email;
+
     private final String password;
-    private final Boolean isActive;
 
-    public MyUserDetails(String email, String password, Boolean isActive) {
-        this.email = email;
-        this.password = password;
-        this.isActive = isActive;
-    }
-
+    private final Collection<? extends GrantedAuthority> authorities;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-
-        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+        return authorities;
     }
 
     @Override
     public String getPassword() {
-
-        return this.password;
+        return password;
     }
 
     @Override
     public String getUsername() {
-
-        return this.email;
+        return email;
     }
 
     @Override
@@ -55,6 +51,6 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return isActive;
+        return true;
     }
 }

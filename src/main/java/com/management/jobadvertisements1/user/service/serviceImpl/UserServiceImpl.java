@@ -1,5 +1,9 @@
 package com.management.jobadvertisements1.user.service.serviceImpl;
 
+import com.management.jobadvertisements1.registrationAndLogin.model.LoginRequest;
+import com.management.jobadvertisements1.registrationAndLogin.model.LoginResponse;
+import com.management.jobadvertisements1.registrationAndLogin.model.RegisterRequest;
+import com.management.jobadvertisements1.security.JwtIssuer;
 import com.management.jobadvertisements1.user.dto.request.UserCreateRequestDto;
 import com.management.jobadvertisements1.user.dto.request.UserUpdateRequestDto;
 import com.management.jobadvertisements1.user.dto.response.UserResponseDto;
@@ -21,6 +25,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final JwtIssuer jwtIssuer;
 
 
     @Override
@@ -114,6 +119,40 @@ public class UserServiceImpl implements UserService {
     public User getUserByEmail(String email) {
 
         return userRepository.findByEmail(email);
+    }
+
+    public void registerUser(RegisterRequest registerRequest) {
+
+        if (userRepository.existsByEmail(registerRequest.getEmail())) {
+            throw new IllegalArgumentException("Email is already in use");
+        }
+
+
+        User userEntity= new User();
+        userEntity.setEmail(registerRequest.getEmail());
+
+        var token = jwtIssuer.issuer(registerRequest.getEmail(), registerRequest.getPassword());
+        userEntity.setPassword(token);
+
+
+        userRepository.save(userEntity);
+
+    }
+
+    public LoginResponse loginUser(LoginRequest loginRequest) {
+
+        User userEntity = userRepository.findByEmail(loginRequest.getEmail());
+
+        var token = jwtIssuer.issuer(loginRequest.getEmail(), loginRequest.getPassword());
+
+        if (token.equalsIgnoreCase(userEntity.getPassword())) {
+
+            return LoginResponse
+                    .builder()
+                    .token(token)
+                    .build();
+        }
+        else throw new IllegalArgumentException("Password is incorrect");
     }
 
 
