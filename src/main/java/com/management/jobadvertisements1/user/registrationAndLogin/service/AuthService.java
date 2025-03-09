@@ -1,6 +1,6 @@
-package com.management.jobadvertisements1.registrationAndLogin.service;
+package com.management.jobadvertisements1.user.registrationAndLogin.service;
 
-import com.management.jobadvertisements1.registrationAndLogin.model.LoginResponse;
+import com.management.jobadvertisements1.user.registrationAndLogin.model.LoginResponse;
 import com.management.jobadvertisements1.security.JwtIssuer;
 import com.management.jobadvertisements1.security.UserPrincipal;
 import lombok.RequiredArgsConstructor;

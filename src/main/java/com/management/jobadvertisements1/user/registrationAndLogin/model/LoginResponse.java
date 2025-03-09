@@ -1,4 +1,4 @@
-package com.management.jobadvertisements1.registrationAndLogin.model;
+package com.management.jobadvertisements1.user.registrationAndLogin.model;
 
 
 import lombok.AllArgsConstructor;

@@ -1,9 +1,8 @@
-package com.management.jobadvertisements1.registrationAndLogin.controller;
+package com.management.jobadvertisements1.user.registrationAndLogin.controller;
 
-import com.management.jobadvertisements1.registrationAndLogin.model.LoginRequest;
-import com.management.jobadvertisements1.registrationAndLogin.model.LoginResponse;
-import com.management.jobadvertisements1.registrationAndLogin.model.RegisterRequest;
-import com.management.jobadvertisements1.registrationAndLogin.service.AuthService;
+import com.management.jobadvertisements1.user.registrationAndLogin.model.LoginRequest;
+import com.management.jobadvertisements1.user.registrationAndLogin.model.LoginResponse;
+import com.management.jobadvertisements1.user.registrationAndLogin.model.RegisterRequest;
 import com.management.jobadvertisements1.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequiredArgsConstructor
+@RestController()
+@RequiredArgsConstructor()
 public class AuthController {
 
     private final UserService userServices;

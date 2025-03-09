@@ -1,8 +1,8 @@
 package com.management.jobadvertisements1.user.service.serviceImpl;
 
-import com.management.jobadvertisements1.registrationAndLogin.model.LoginRequest;
-import com.management.jobadvertisements1.registrationAndLogin.model.LoginResponse;
-import com.management.jobadvertisements1.registrationAndLogin.model.RegisterRequest;
+import com.management.jobadvertisements1.user.registrationAndLogin.model.LoginRequest;
+import com.management.jobadvertisements1.user.registrationAndLogin.model.LoginResponse;
+import com.management.jobadvertisements1.user.registrationAndLogin.model.RegisterRequest;
 import com.management.jobadvertisements1.security.JwtIssuer;
 import com.management.jobadvertisements1.user.dto.request.UserCreateRequestDto;
 import com.management.jobadvertisements1.user.dto.request.UserUpdateRequestDto;

@@ -82,6 +82,7 @@
             <version>2.4.0</version> <!-- Make sure the version is compatible with Spring Boot 3.x -->
         </dependency>
 
+
         <!-- MapStruct (for DTOs and Entities) -->
         <dependency>
             <groupId>org.mapstruct</groupId>

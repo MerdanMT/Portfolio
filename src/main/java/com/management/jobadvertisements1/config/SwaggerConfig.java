@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,16 +15,16 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI getOpenAPI() {
         return new OpenAPI()
-                .info(new Info()
-                        .title("Job Advertisements API")
+                .info(new Info().title("API Documentation")
                         .version("v1")
-                        .description("Job Advertisements Backend APIs")
-                        .contact(new Contact()
-                                .url("https://www.linkedin.com/in/merdan-memmedov-449bb8181/")
-                                .email("memmedovmerdan686@gmail.com")
-                                .name("Merdan Memmedov")
-                        )
-                );
+                        .description("API Documentation"))
+                .components(new io.swagger.v3.oas.models.Components()
+                        .addSecuritySchemes("bearerAuth", new SecurityScheme()
+                                .name("bearerAuth")
+                                .type(SecurityScheme.Type.HTTP)
+                                .scheme("bearer")
+                                .bearerFormat("JWT")
+                        ));
     }
 }
 
